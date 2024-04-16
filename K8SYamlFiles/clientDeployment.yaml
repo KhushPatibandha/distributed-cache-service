@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cache-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cache-client
+  template:
+    metadata:
+      labels:
+        app: cache-client
+    spec:
+      containers:
+      - name: cache-client
+        image: khushpatibandha/distributedcacheclient:latest
+        ports:
+        - containerPort: 5000
