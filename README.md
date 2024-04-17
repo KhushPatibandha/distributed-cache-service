@@ -2,6 +2,10 @@
 # distributed cache service
 
 A rapid and scalable data storage system distributed across multiple nodes, designed to sustain high-performance reading. Utilizes Zookeeper for configuration management and consistent hashing for efficient key-value storage and retrieval under the hood.
+
+## System idea
+![image](https://github.com/KhushPatibandha/distributed-cache-service/assets/104303438/6feee4ea-b823-4f3a-a9e6-6e3cfd03798b)
+
 ## Setup
 Clone the project
 ```
