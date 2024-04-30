@@ -48,6 +48,7 @@ public class ServerCall {
         in.close();
         
         System.out.println("Response: " + response.toString());
+        System.out.println("key: " + key + " returned from server: " + serverIp);
         return response.toString();
     }
 
@@ -58,6 +59,8 @@ public class ServerCall {
         if (serverIp == null || serverIp.isEmpty()) {
             throw new IOException("Server IP is null or empty");
         }
+
+        System.out.println("Saving the key: " + key + " in server with ip: " + serverIp);
 
         String urlStr = "http://" + serverIp + ":8080/api/post?key=" + URLEncoder.encode(key, "UTF-8") + "&value=" + URLEncoder.encode(value, "UTF-8");
         URL url = new URL(urlStr);
