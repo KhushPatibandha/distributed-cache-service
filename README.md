@@ -70,3 +70,34 @@ kubectl port-forward <name of client pod> 5000:5000
 | cache key and value      | `string, string` | Post your key-value |
 
 
+## Auto scaling
+
+Run autoscaling bash file.
+```
+bash autoScalingScript.sh 
+```
+
+### Stress test
+
+Create a traffic pod
+```
+kubectl apply -f trafficGen.yaml
+```
+
+SSH into traffic pod
+```
+kubectl exec -it trafficgen -- sh 
+```
+
+install wrk benchmark tool
+```
+apk add wrk
+```
+
+Test
+```
+wrk -c 10 -t 10 -d 300s -H "Connection: Close" http://cache-client:5000/api/get/khush
+```
+## TODO
+
+Implement rehashing of keys once a new server is scaled up or scaled down. The current implementation doesn't have rehashing for keys, hence it might result in cache misses if servers are scaled up. It will work perfectly once they are scaled down again.
